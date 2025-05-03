@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.addEventListener('keydown', function(event){
+            var x = 0;
+            var y = 0;
+            const step = 10; //10pxつづ
+
+            // alert(event.key);確認おために
+            switch(event.key){                  //particamente un if
+                case 'ArrowUp':
+                    y -= step;
+                    alert(y);
+                    break;
+
+                case 'ArrowDown':
+                    y += step;
+                    alert(y);
+                    break;
+
+                case 'ArrowLeft':
+                    x -= step;
+                    alert(x);
+                    break;
+
+                case 'ArrowRight':
+                    x += step;
+                    alert(x);
+                    break;   
+            }
+        });
+    </script>
+    
+</body>
+</html>

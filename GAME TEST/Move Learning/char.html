@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid black;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>キャラ移動させる</h2>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+
+    <script>
+        window.onload = function(){
+            const canvas = document.getElementById('myCanvas');
+            const context = canvas.getContext('2d');
+
+            //キャラクターのサイズ
+            let character = {
+                x:100,
+                y:100,
+                width: 50,
+                height: 50,
+                color: 'blue'
+            };
+            //カーゾルで　　できるように
+                
+            function drawChar(){
+                //ripulisce il canvas
+                context.clearRect(0,0,canvas.width,canvas.height);
+                context.fillStyle = character.color; //colore del character
+                context.fillRect (character.x,character.y,character.width,character.height);
+                    
+            }
+
+            document.addEventListener('keydown', function(event){
+                const step = 10; //10pxつづ
+                // alert(event.key);確認おために
+                switch(event.key){                  //particamente un if
+                    case 'ArrowUp':
+                        character.y -= step;
+                        break;
+
+                    case 'ArrowDown':
+                        character.y += step;
+                        break;
+
+                    case 'ArrowLeft':
+                        character.x -= step;
+                        break;
+
+                    case 'ArrowRight':
+                        character.x += step;
+                        break;   
+                }
+                drawChar();
+            });
+            drawChar();
+
+        }
+    </script>
+</body>
+</html>

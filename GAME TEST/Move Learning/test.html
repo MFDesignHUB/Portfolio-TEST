@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2>キャラ移動させる</h2>
+    <img id="sourceImage" src="tiles.png" alt="Source Image" style="display:none;">
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+
+    <script>
+        window.onload = function() {
+            const canvas = document.getElementById('myCanvas');
+            const context = canvas.getContext('2d');
+            const img = document.getElementById('sourceImage');
+
+            img.onload = function() {
+                drawMap(); // マップを描画
+                drawChar(); // キャラクターを描画
+            };
+
+            img.src = img.src;
+
+            function drawMap() {
+                crops.forEach(crop => {
+                    context.drawImage(
+                        img,
+                        crop.x, crop.y, crop.width, crop.height,
+                        crop.x, crop.y, crop.width, crop.height
+                    );
+                });
+            }
+
+    const cropWidth = 80;   // Larghezza del ritaglio
+    const cropHeight = 80;   // Altezza del ritaglio
+    const spacing = 10;      // Spaziatura tra i ritagli
+    const cols = 5;          // Numero di colonne (orizzontale)
+    const rows = 5;          // Numero di righe (verticale)
+
+
+            const crops = [];
+
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    const x = col * (cropWidth + spacing); // x座標
+                    const y = row * (cropHeight + spacing); // y座標
+                    crops.push({ id: `${row}-${col}`, x: x, y: y, width: cropWidth, height: cropHeight, alerted: false });
+                }
+            }
+
+            let character = {
+                x: 100,
+                y: 100,
+                width: 50,
+                height: 50,
+                color: 'green'
+                
+            };
+
+            function drawChar() {
+                context.clearRect(0, 0, canvas.width, canvas.height); // Ripulisce il canvas
+                drawMap(); // Ridisegna la mappa
+                context.fillStyle = character.color; // Colore del character
+                context.fillRect(character.x, character.y, character.width, character.height);
+            }
+
+            document.addEventListener('keydown', function(event) {
+                const step = 10; // 10pxつづ
+                switch (event.key) { // Condizione per spostare il personaggio
+                    case 'ArrowUp':
+                    character.y -= step;
+                        break;
+                    case 'ArrowDown':
+                        character.y += step;
+                        break;
+                    case 'ArrowLeft':
+                        character.x -= step;
+                        break;
+                    case 'ArrowRight':
+                        character.x += step;
+                        break;
+                }
+                drawChar(); // Ridisegna il personaggio e la mappa
+            });
+
+            drawChar(); // Disegna la mappa e il personaggio inizialmente
+        }
+    </script>
+</body>
+</html>
+
+       
