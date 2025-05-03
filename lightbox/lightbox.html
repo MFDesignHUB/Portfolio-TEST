@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Lightbox2</title>
+
+    <!-- Lightbox2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- jQuery (già incluso) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <!-- Four Image Set -->
+    <div>
+        <a href="image/01.png" data-lightbox="gallery" data-title="メロン">
+            <img src="image/01.png" alt="メロン" width="150">
+        </a>
+        <a href="image/02.png" data-lightbox="gallery" data-title="バナナ">
+            <img src="image/02.png" alt="バナナ" width="150">
+        </a>
+        <a href="image/03.png" data-lightbox="gallery" data-title="りんご">
+            <img src="image/03.png" alt="りんご" width="150">
+        </a>
+        <a href="image/04.png" data-lightbox="gallery" data-title="オレンジ">
+            <img src="image/04.png" alt="オレンジ" width="150">
+        </a>
+        <a href="image/05.png" data-lightbox="gallery" data-title="レモン">
+            <img src="image/05.png" alt="レモン" width="150">
+        </a>
+    </div>
+
+    <!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+    <script>
+        lightbox.option({
+            'fadeDuration':1000,
+            'resizeDuration': 200,
+            'wrapAround': true,
+        });
+    </script>
+
+</body>
+</html>
+

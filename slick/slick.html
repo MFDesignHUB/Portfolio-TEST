@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider{
+            width: 400px;
+            margin: 0 auto;
+        }
+
+
+        
+
+
+    </style>
+
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+</head>
+<body>
+
+    <!-- 3,slick画像を読み込み -->
+     <div class="slider">
+     <div><img src="image/01.png" alt="メロン"></div>
+     <div><img src="image/02.png" alt="バナナ"></div>
+     <div><img src="image/03.png" alt="りんご"></div>
+     <div><img src="image/04.png" alt="オレンジ"></div>
+     <div><img src="image/05.png" alt="レモン"></div>
+    </div>
+
+
+    <!-- 2,jsファイルを読み込み -->
+     <!-- script src="js/query-3.7.1.min.js"></script> -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+     <script src="js/slick.min.js"></script>
+    
+
+     <!-- 4.slick plugin の設定 -->
+      <script>
+        $(function(){ //questo va messo quando si usa jquery per attivare le funzioni eccetera
+            $('.slider').slick({  //slick plug-in を使する
+                  dots: true,
+                  autoplay: true,
+                  autoplaySpeed: 2000,
+                  slideToShow: 1,
+                  slideToScroll: 1,
+                  arrows: true,
+            });
+        });
+      </script>
+</body>
+</html>

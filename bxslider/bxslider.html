@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".slider").bxSlider();
+      });
+    </script>
+
+    <style>
+        .slider{
+            width: 400px;
+            margin: 0 auto;
+        }
+        .slider img{
+            display: block;
+            height: auto;
+            margin: 0 auto;
+        }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="slider">
+        <div><img src="image/01.png" alt="メロン"></div>
+        <div><img src="image/02.png" alt="バナナ"></div>
+        <div><img src="image/03.png" alt="りんご"></div>
+        <div><img src="image/04.png" alt="オレンジ"></div>
+        <div><img src="image/05.png" alt="レモン"></div>
+       </div>
+
+  </body>
+</html>
