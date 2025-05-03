@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>昭和記念公園</title>
+
+    <style>
+
+    body{
+        margin: 0;  /* 上、左、からのスペースを消す */
+        padding: 0; /* 上、左、からのスペースを消す */
+
+        /* そのマシンにインストールされているフォントを使う */
+        /* マシン環境に依存しないフォントはウェブフォント */
+        /* 明朝系 serif　ゴシック系 sans-serif */
+        font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ',Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+    }
+
+#wrapper{
+    width: 1000px; /* 全体の大きさをつけないと真ん中に行かない */
+    margin: 0 auto; /* 真ん中に */
+}
+
+    /* 公園名とコピーを横並びにする */
+    header{
+        /* border: solid 1px red; */
+        width: 1000px; /* 幅1000pxで固定 */
+        display: flex; /* 横並びにするならまずはflex！ */
+        align-items: center; /* 文字の垂直方向中揃えに */
+    } 
+    header h1{
+        /* border: solid 1px blue; */
+        font-size: 42px; /* fz42 */
+        font-family: serif; /* 明朝系のフォントを使用する */
+    }
+    header p{
+        /* border: solid 1px green; */
+        font-size: 16px;
+        margin-left: auto; /* boxを右端に飛ばす */
+        /* vertical-align: middle; */
+    }
+
+    /* スポット名と点線の下線 */
+    h2{
+        font-size: 18px;
+        border-bottom: 1px dotted black;
+    }
+
+    /* ここからセクションの設定 */
+    section{
+        /* border: 1px solid red; */
+        width: 1000px;
+        display: flex;
+    }
+
+    section img{
+        /* border: solid 1px blue; */
+        margin: 10px;
+    }
+
+    section p{
+        /* border: 1px solid green; */
+        font-size: 16px; /* 16pxは初期値だが、変わって欲しくないので書く */
+
+        /* line-heightを使うならば、marginとの組み合わせがオススメ */
+        line-height: 2.0; /* 行間の設定 */
+        margin: 50px; /* paddingと使いやすい方で余白とるのはOK */
+
+        /* padding: 50px; */
+
+    }
+
+
+    img{
+        vertical-align: bottom; /* 画像下の隙間をなくす */
+    }
+
+    nav{
+        background-color: blue;
+        display: inline-block; /* 高さ、幅を出す */
+    }
+        nav .container{
+            width: 1000px; /* inline-blockにしないと幅が効かない */
+        }
+
+        nav .container ul{
+            list-style: none; /* 中黒を消す */
+            display: flex; /* ナビの文字を横並びに */
+            justify-content: center; /* 子要素を中央揃えに */
+        }
+        nav .container a{
+            text-decoration: none; /* 下線を消す */
+            color: white; /* リンクの文字を白色に */
+            font-size: 16px; /* リンク部の文字サイズ */
+            padding: 10px; /* 文字間のスペース */
+            margin: 10px;  /* ボックス間のスペース */
+
+            transition-duration: 1.5s;
+            transition-timing-function: ease;
+        }
+
+        nav .container a:hover{
+            background-color: rgba(255, 255, 255, 0.7);
+            /* rgbaで不透明度を与えられる */
+            color: black;
+        }
+
+    /* footerの設定 */
+        footer{
+            background-color: lightblue;
+            display: flex;
+            width: 1000px;
+        }
+        footer table{
+            margin: auto; /* テーブルを真ん中に寄せる */
+        }
+        footer th, footer td{
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        footer table th{
+            text-align: left;
+        }
+        footer img{
+            margin-left: auto; /* 画像を右側に */
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrapper">
+
+
+    <header>
+        <h1>国営昭和記念公園</h1>
+
+        <p>都心部から電車やバスで約60分。都会の中の大自然へようこそ！</p>
+    </header>
+
+<img src="image/main_view.png" width="1000" height="340" alt="全景">
+<!-- 高精細液晶（HiDPI）対応のために実際の大きさと違うサイズを指定している -->
+<!-- 2000 * 640 もしくは 3000 * 1020 くらいの元画像を用意する -->
+
+    <nav>
+
+    <div class="container">
+    <!-- ul>li*6>a -->
+        <ul>
+            <li><a href="">ご利用案内</a></li>
+            <li><a href="">施設紹介</a></li>
+            <li><a href="">イベント</a></li>
+            <li><a href="">花情報</a></li>
+            <li><a href="">アクセス</a></li>
+            <li><a href="">よくある質問</a></li>
+        </ul>
+    </div>
+ 
+    </nav>
+
+<!-- ここから花の丘 -->
+<h2>花の丘</h2>
+<section>
+    <img src="image/flower.jpg" width="400" height="300" alt="花の丘">    
+    <p>約15,000㎡の広大な花畑です。春にはポピー、秋にはコスモスが花の丘一面に咲き、公園を彩ります。丘の上に上れば、立川駅方面が一望できます。</p>    
+</section>
+<!-- ここまで花の丘 -->
+
+
+<!-- ここからふれあいの広場 -->
+<h2>ふれあいの広場</h2>
+<section>
+    <img src="image/friend.jpg" width="400" height="300" alt="ふれあいの広場">
+    <p> なだらかな起伏をもった芝生広場で、コンサートなどのイベントも開催されます。広々とした芝生の上で寝転んだり、お弁当を食べたりとのんびり自由な時間をお過ごしください。</p>    
+</section>
+<!-- ここまでふれあいの広場 -->
+
+
+<!-- ここからこもれびの里 -->
+<h2>こもれびの里</h2>
+<section>
+    <img src="image/komo.jpg" width="400" height="300" alt="こもれびの里">
+    <p>こもれびの里は、水田や畑、農家と屋敷林など、昭和30年代の武蔵野の農村風景やそこでの暮らしを再現しています。また、「昭和・武蔵野・農業」をテーマに単に昔の風景を垣間見ることではなく、暮らしの中で培われてきた知恵を再発見し、継承していくことを目的としています。 市民参加により整備・運営が行われ、農作業や年中行事など様々な体験を通じて、 自然と暮らしの知恵を伝えていく活動をしています。</p>
+</section>
+<!-- ここまでこもれびの里 -->
+
+<footer>
+    <!-- カンプを見ながらテーブルを組む -->
+    <!-- table>tr*5>td*3 -->
+
+    <table>
+        <tr>
+            <th colspan="3">
+                <h2>国営昭和記念公園管理センター</h2>
+            </th>
+        </tr>
+        <tr>
+            <th>住所</th>
+            <td>:</td>
+            <td>〒190-0014</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>東京都立川市緑町3173</td>
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            <td>:</td>
+            <td>042-528-1751</td>
+        </tr>
+        <tr>
+            <th>アクセス</th>
+            <td>:</td>
+            <td>
+    中央自動車道国立府中ICより8km。<br>
+    中央自動車道国立府中IC下車。<br>
+    国道20号線を立川方面へ。<br>
+    日野橋交差点を右折。
+            </td>
+        </tr>
+    </table>
+    
+    <img src="image/menu_entry.png" width="400" height="300" alt="立川口">     
+</footer>
+
+<!-- smallはコピーライトを入れるためのタグ -->
+<small>Copyright © Showa Kinen Park All Rights Reserved.</small>
+
+</div>
+
+<script>
+// wrapper のスタイルを取(ci si va a prendere info da developer su google)
+var test = document.getElementById('wrapper');
+var style = window.getComputedStyle(test);
+
+console.log(style.display);
+console.log(style.width);
+console.log(style.margin);
+console.log(style.padding);
+console.log(style.color);
+console.log(style.background);
+console.log(style.fontSize);
+
+//助県分岐をする
+
+
+
+
+
+document.getElementById('wrapper').style.background = 'red'; //per fare il background rosso
+
+</script>
+
+</body>
+</html>
