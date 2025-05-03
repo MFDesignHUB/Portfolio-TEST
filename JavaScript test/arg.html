@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div#morning{
+            color: red;
+        }
+        div#lunch{
+            color: red;
+        }
+        div#evening{
+            color: red;
+        }
+    </style>
+    <script>
+        // function greet1(){
+        //     document.getElementById('morning').innerHTML= 'おはようございます';
+        // }
+        // function greet2(){
+        //     document.getElementById('lunch').innerHTML= 'こんにちわ';
+        // }
+        // function greet3(){
+        //     document.getElementById('evening').innerHTML= 'こんばんわ';
+        // }
+
+        function greet(answer,pos){
+            document.getElementById(pos).innerHTML=answer
+        }
+    </script>
+</head>
+<body>
+    <h1>日本語の挨拶</h1>
+
+    
+    <p onClick="greet('morning','morning');" >朝の挨拶</p>
+    <div id="morning"></div>
+    
+    <p onClick="greet('lunch','lunch');">昼の挨拶</p>
+    <div id="lunch"></div>
+
+    
+    <p onClick="greet('evening','evening');">夜の挨拶</p>
+    <div id="evening"></div>
+    
+</body>
+</html>

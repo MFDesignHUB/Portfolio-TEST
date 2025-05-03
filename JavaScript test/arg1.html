@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script>
+            // ---andando a metter answer e pos di va a fare un collegamento con html 
+
+        function fruitsName(answer, pos){
+            // var answer = 'melon'; ---anziche usare questo si puo mettere dirretamente answer tra parentesi
+            document.getElementById(pos).innerHTML= answer;
+            // ----mettendo pos su element si va a mettere il riferimento di posizione
+        }
+            // function fruitsName1(answer){
+            //     // var answer = 'orange';
+            //     document.getElementById('fruits1').innerHTML= answer;
+            // }
+            // function fruitsName2(answer){
+            //     // var answer = 'banana';
+            //     document.getElementById('fruits2').innerHTML= answer;
+            // }
+
+    </script>
+</head>
+<body>
+    <h1>英語で考えよう</h1>
+
+    <p onClick="fruitsName('melon','fruits1');">メロン</p>
+    は
+    <div id="fruits1"></div>
+    <hr>
+
+    <p onClick="fruitsName('orange','fruits2');">オレンジ</p>
+    は
+    <div id="fruits2"></div>
+    <hr>
+
+    <p onClick="fruitsName('banana','fruits3');">バナナ</p>
+    は
+    <div id="fruits3"></div>
+    <hr>
+
+</body>
+</html>
