@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+            <script>
+                $(function(){
+                    $(".headC").click(function(){
+                        $(".headB").slideToggle();
+                    });
+                });
+            </script>
+
+    <style>
+                *{
+                padding: 0;
+                margin: 0;
+                }
+                header{
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: 100; /**/
+                    width: 100%; /*幅*/
+                    background-color: rgba(255,255,255,0.8);
+                }
+                header .container{
+                    /* border: 1px solid blue; */
+                }
+
+                header .headA{
+                    /* border: 1px solid orange; */
+                    text-decoration: none;
+
+                    font-size: 50px;
+                    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    color: green;
+                    /* background-color: green; */
+                    
+                    padding: 0px 10px;
+                            /* 上下　右左 */
+                    line-height: 40px;
+                    /* これならばはみ出ない */
+                }
+                header .headB{
+                    /* border: 1px solid red; */
+                    text-decoration: none;
+                
+                }
+                header .headB ul{
+                    list-style: none;
+                    
+                }
+                header .headB a{
+                    text-decoration: none;
+                    
+                    font-size: 18px;
+                    color: black;
+                    padding: 10px; /*per dare pazio a destra*/
+                    display: block; 
+                }
+                .headB a:hover{
+                    background-color: rgba(0,0,0,0.3);
+                    /* a はaチャンネル＝下 */
+                }
+                @media (max-width: 768px){
+                    
+                    header .smlcontainer{
+                        /* border: 1px solid orange; */
+                        display: flex; /*高さが出る*/
+                        align-items: center;
+                        justify-content: space-between; /*per vedere il pulsante a sx*/
+                    }
+                    header .headC{
+                        font-size: 30px;
+                        border: none;
+                        outline: none;
+                        background-color: none;
+                        cursor: pointer; /*facciamo apparire il puntatore*/
+                        
+
+                        margin-right: 10px;
+                        padding: 0;
+                    }
+                    header .headC:hover{
+                        opacity: 0.5;
+                    }
+                    header .headB{
+                        display: none; /*da qua facciamo sparire il menu*/
+                    }
+                }
+        
+        @media (min-width: 768px){
+            header .container{
+                display: flex; 
+                justify-content: space-between;
+
+                align-items: center;
+            }
+            header .headB ul{
+                display: flex;
+            }
+
+            /* ハンバーガーメニューの処理 */
+            .headC{
+                display: none;　/*不要なので消しておく*/
+                
+            }
+        }
+
+        body{
+            padding: 0px;
+            margin: 0px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        section.conA{
+            /* border: 1px solid orange; */
+            /* background-image: url(image/sunset.jpg);
+            background-position: center;
+            background-size: cover;
+
+            text-align: center;
+            height: 100vh;    serve a riempire al 100% lo schermo */
+            
+            background-image: url(image/sunset.jpg);
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+            min-height: 100vh; /* Minimo 100% dell'altezza dello schermo */
+            padding-bottom: 2cm; /* Spazio di almeno 2 cm sopra il pulsante */
+            box-sizing: border-box; /* Include il padding nel calcolo delle dimensioni */
+            background-image: darken;
+        }
+        @media (max-width: 768px) {  
+        section.conA {
+        min-height: 300px; /* Riduci l'altezza minima a 500px su dispositivi mobili */
+        background-size: cover; /* Mantiene l'immagine centrata */
+        padding-bottom: 2cm; /* Mantiene lo stesso padding se necessario */
+        font-size: 18px;
+          }
+          section.conA div p{
+            font-size: 18px;
+          } 
+
+        }
+
+        section.conA img{
+            /* border: 1px solid red; */
+            width: 20%;
+            padding-top: 2.5cm;
+            
+        }
+        section.conA p{
+            /* border: 1px solid pink; */
+            color: white;
+            font-size: 22px;
+            /* padding-top: cm; */
+         
+            
+            font-family: "Noto Serif JP", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: 0.3em;   
+        }
+
+        section.conA h1{
+            /* border: 1px solid purple; */
+            color: white;
+            font-size: 5.5vw;
+            letter-spacing: 0.08em;
+            
+            font-family: "Noto Serif JP", serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            margin-top: 0%;
+            margin-bottom: 10px;
+            }
+        section.conA a{
+            display: inline-block;
+            border: 5px solid white;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 10px;
+            background-color: lightblue;
+
+            transition-duration: 1.2s;
+            transition-timing-function: ease;
+            }
+        section.conA a:hover{
+            background-color: pink;
+        }
+        
+
+        .conB .icon{
+            /* border: 1px solid red; */
+            background-color: gray;
+            color: white;
+
+            font-size: 50px;
+            width: 2em; /*50 * 2=100 */
+            line-height: 2em; /*50 * 2=100 */
+            border-radius: 50%;
+            text-align: center;
+        }
+        .conB .container{
+            /* border: 1px solid blue; */
+            padding: 35px;
+        }
+        .conB .h2{
+            /* border: 1px solid pink; */
+            font-size: 14px;
+        }
+        .conB .text{
+            /* border: 1px solid green; */
+            font-size: 14px;
+            text-align: center;
+        }
+        .conB p{
+            /* border: 1px solid orange; */
+            font-size: 16px;
+        }
+        /* metter pudding ecc su tutto */
+
+        @media (min-width:768px){
+            
+            .conB .container{
+                display: flex;
+            }
+            .conB .text{
+                flex: 1;
+            }
+            section.conA div p{ 
+                font-size: 28px;
+            }
+        }
+
+
+        .conC .photo{
+            width: 100%;
+            background-image: url(image/bus.jpg);
+            background-position: center;
+            background-size: cover;
+
+            text-align: center;
+            height: 40vh;    
+        }
+        .conC .container{
+            display: flex;
+            flex-direction: column;
+        }
+        .conC .text{
+            padding: 20px;
+            /* border: 1px solid red; */
+           
+        }
+        @media(min-width: 768px){
+            .conC .container{
+                flex-direction: row;
+            }
+
+        }
+
+        .conD .location iframe{
+            width: 100%;
+            height: 300px;
+        
+        }
+
+        @media (min-width: 768px){
+            .conD .location iframe{
+                height: 500px;
+            }
+        }
+
+        footer body{
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif;
+        }
+        
+
+        footer div{
+            background-color: rgb(129, 129, 129);
+            /* border: 1px solid red;  */
+            color: white;
+            
+        } 
+        footer div.container div.footA h2{
+            font-size: 24px;
+            letter-spacing: 0.2em;
+            
+        }
+        footer div.container div.footA p{
+            font-size: 14px;
+            padding: 5px;
+            
+        }
+
+        /* ここからfooterB */
+        footer div.container nav.footB div h3{
+            font-size: 16px;
+            /* border-bottom: 1px dotted black; */
+            padding: 0px;
+        }
+        footer div.container nav.footB div ul{
+            list-style: none;
+            padding: 0px;
+           
+        }
+        footer div.container nav.footB div ul a{
+            text-decoration: none;
+            font-size: 13px;
+            padding-left: 0px;
+        
+        }
+        footer div.container nav.footB div ul li a:hover{
+            background-color: rgb(61, 61, 61);
+            border-radius: 15px;
+            
+        }
+
+        @media (min-width:768px){
+            footer div.container nav.footB{
+                display: flex;
+            }
+            footer div.container nav.footB div{
+                flex: 1;
+            }
+            footer div.container {
+                max-width: 1500px;
+                padding: 30px;
+            }
+            }
+
+            @media (max-width:768px){
+                footer div.container {
+                padding: 20px;
+            }
+            }
+
+            a{
+                color: white;
+            }
+
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="smlcontainer">
+                <!-- ロゴを入れる -->
+                <a href="#" class="headA">TDG</a>
+
+                <!-- ハンバーガーボタンを出して行こう -->
+                <button type="button" class="headC">
+                    <!-- ハンバーガーの三本線 -->
+                    <span class="fa-solid fa-bars" title="MENU"></span>
+
+                </button>
+            </div>
+            <!-- グロナビ -->
+
+            <nav class="headB">
+                <ul>
+                    <li><a href="#">グラフィックデザイン学科</a></li>
+                    <li><a href="#">映像デザイン学科</a></li>
+                    <li><a href="#">イラストレーション学科</a></li>
+                    <!-- <li><a href="#">プロダクトデザイン学科</a></li>
+                    <li><a href="#">学校について</a></li> -->
+                    <li><a href="#">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="conA">
+        <div class="container">
+            <img src="image/pc_logo.svg" alt="パソコン">
+            <h1>東京デザイナー・アカデミー</h1>
+            <p>のあるがっこでデザインを学ぶ</p>
+            <a href="https://www.tdg.ac.jp/">入学はこちら</a>
+        </div>
+    </section>
+
+    <section class="conB">
+        <div class="container">
+
+            <div class="text">
+                <span class="fa-5x icon fa-solid fa-chalkboard-user"></span>
+
+                <h2>わかりやすい</h2>
+                <p>いつでもだれでも、興味を持った　業に取り組め<br>
+                    必ずできるようにサポートします。
+                </p>
+            </div>
+            <div class="text">
+                <span class="fa-5x icon fa-regular fa-face-smile"></span>
+                <h2>絶えない笑顔</h2>
+                <p>キャンパスはいつも笑顔でいっぱい。今日も明日<br>
+                    もキャンパスライフをエンジョイ！
+                </p>
+            </div>
+            <div class="text">
+                <span class="fa-5x icon fa-solid fa-people-carry-box"></span>
+
+                <h2>もし困ったとき</h2>
+                <p>引っ越しや就職でお悩みの場合は必要な業<br>
+                    者の手配などを代行することも可能です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+        <section class="conC">
+            <div class="container">
+                <div class="photo">
+                    <!-- <img src="../0708/image/bus.jpg" alt="" width="400">  -->
+                </div>
+                <div class="text">
+                    <h2>広大な敷地でも移動が楽々</h2>
+                    <p>
+                        広大なキャンパスを移動するのに時間が大変、歩くのが面
+                        倒、そんな不安を持っている方に朗報。クールバスが最
+                        寄駅、校内のバス停に停車するので移動も実は楽々なんです！
+        
+                    </p>
+                </div>
+        <!-- anche per .conE verra usata questa tecnica -->
+            </div>
+        </section>
+
+            <section class="conD">
+                <aside class="location">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16633.89345759068!2d139.74168833635383!3d35.698284201662915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c156e7cce8d%3A0x3d303f40cfbc7158!2sTokyo%20Designer%20Gakuin%20Nishi-Kanda%20school%20building!5e0!3m2!1sit!2sjp!4v1721632062026!5m2!1sit!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </aside>
+            </section>
+
+
+            <footer>
+                <div class="container"> 
+                    <div class="footA">
+                        <h2>東京デザイナー・アカデミー</h2>
+                        <p>
+                        〒101-0062 東京都千代田区神田駿河台2-11 <br>
+                        </p>
+                        <div class="website">
+                            <a href="https://www.tdg.ac.jp"target="_blank"> https://www.tdg.ac.jp </a>
+                        </div>
+                    </div>
+            
+                        <nav class="footB">
+                            <div>
+                                <h3>グラフィックデザイン学科</h3>
+                                <hr>
+                                <ul>
+                                    <li><a href="https://www.tdg.ac.jp/department/graphic/">グラフィックデザイン専攻</a></li>
+                                    <li><a href="https://www.tdg.ac.jp/department/illustration/">イラストデザイン専攻</a></li>
+                                    <li><a href="https://www.tdg.ac.jp/department/graphic#specialization-graphic-advertising-design">広告デザイン専攻</a></li>
+                                    <li><a href="https://www.tdg.ac.jp/department/graphic#specialization-package-design">パッケージデザイン専攻</a></li>
+                                    <li><a href="https://www.tdg.ac.jp/department/graphic#specialization-publishing-design"> 出版デザイン専攻</a></li>
+                                    <li><a href="">Webデザイン専攻［デザインコース］</a></li>
+                                    <li><a href="">Webデザイン専攻［エンジニアコース］</a></li>
+                                </ul>
+                            </div>
+            
+                        
+                            <div>
+                                <h3>映像デザイン学科</h3>
+                                <hr>
+                                <ul>
+                                    <li><a href="">3DCG専攻</a></li>
+                                    <li><a href="">VFX専攻</a></li>
+                                    <li><a href="https://www.tdg.ac.jp/department/visualimage/vfx.html">モーショングラフィクス専攻</a></li>
+                                    <li><a href=""> CG専攻</a></li>
+                                </ul>
+                            </div>
+            
+                            <div>
+                                <h3>イラストレーション学科</h3>
+                                <hr>
+                                <ul>
+                                    <li><a href="https://www.tdg.ac.jp/department/illustration/">イラストレーション専攻</a></li>
+                                    <li><a href="">メディアイラスト専攻</a></li>
+                                    <li><a href="">デジタルイラスト専攻</a></li>
+                                    <li><a href="">ゲームイラスト専攻</a></li>
+                                    <li><a href="">キャラクターイラスト専攻</a></li>
+                                    <li><a href="">絵本作家専攻</a></li>
+                                </ul>       
+                            </div>
+            
+            
+                            <div>
+                                <h3>プロダクトデザイン学科</h3>
+                                <hr>
+                                <ul>
+                                    <li><a href="">雑貨デザイン専攻</a></li>
+                                    <li><a href="">トイデザイン専攻</a></li>
+                                    <li><a href="">工業デザイン専攻</a></li>
+                                    <li><a href="">カーデザイン専攻</a></li>
+                                    <li><a href="">クラフトデザイン専攻</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                
+                </div>
+                </footer>
+            
+    
+</body>
+</html>

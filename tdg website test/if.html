@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var price= 1000; //andando a modificare questa cifra cambia la risposta data dai due if qui sotto 
+    
+        //1000円は高いか安いか？
+
+        // 条件式を入れる
+        if(price> 1000){
+            // 高いですね
+            document.getElementById('msg').innerHTML='高いですね';
+            }
+        else if(price< 1000){
+            // 安いですね
+            document.getElementById('msg').innerHTML='安いですね';
+        }    
+        else ('まあまあですかね？');
+    </script>
+</head>
+<body>
+
+    <p id="msg"></p>
+    
+</body>
+</html>
