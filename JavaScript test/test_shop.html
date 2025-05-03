@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>八百屋さんへようこそ！</title>
+
+    <style>
+        body {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 20px;
+        }
+        select {
+            margin: 10px;
+            padding: 5px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>八百屋さんへようこそ！</h2>
+    <p>今日の仕入れは以下になります。</p>
+    <p>商品と数量を選んで、ボタンを押してください。</p>
+    <hr>
+
+    <label for="product">商品を選ぶ:</label>
+    <select id="product">
+        <option value="150">オレンジ - 150円</option>
+        <option value="110">キウイ - 110円</option>
+        <option value="900">メロン - 900円</option>
+        <option value="800">スイカ - 800円</option>
+    </select>
+
+    <label for="quantity">数量を選ぶ:</label>
+    <select id="quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+    </select>
+
+    <button onClick="calculatePrice()">計算する</button>
+
+    <p id="result">結果はここに表示されます。</p>
+
+    <script>
+        function calculatePrice() {
+            // Ottieni i valori selezionati
+            const productSelect = document.getElementById('product');
+            const quantitySelect = document.getElementById('quantity');
+
+            const productPrice = parseInt(productSelect.value);  // Prezzo del prodotto
+            const quantity = parseInt(quantitySelect.value);     // Quantità selezionata
+
+            // Calcola il prezzo totale
+            const totalPrice = productPrice * quantity;
+
+            // Mostra il risultato
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = `合計金額: ${totalPrice}円`;
+        }
+    </script>
+
+</body>
+</html>

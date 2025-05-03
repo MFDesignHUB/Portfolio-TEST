@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+
+
+    </style>
+</head>
+<body>
+
+ <script>
+
+document.body.innerHTML += '<p>' + 'now' + '</p>';
+
+    //  配列の復習 
+    const item = 'パソコン';
+    console.log(item);
+
+    const fruits = ['メロン','オレンジ','キウイ','スイカ','りんご'];
+
+    // キウィと表示させる方　を考える
+    console.log (fruits[2]);
+
+    const theDate = new Date();
+    console.log(theDate);
+
+    const year = theDate.getFullYear(); //西暦
+    const month = theDate.getMonth() +1;
+    // i mesi partono da 0 quindi bisogna dare un mese in piu per essere in linea.
+    const date = theDate.getDate();
+    const day = theDate.getDay();
+    const hour = theDate.getHours();
+    const min = theDate.getMinutes();
+    const sec= theDate.getSeconds();
+    const ms= theDate.getMilliseconds();
+
+    const week = ['日','月','火','水','木','金','土'];
+
+    const now = '現在は'+ year +'年'+ month + '月'+ week[day]+'日'+ hour+'時'+ min+ '分'+ sec+'秒';
+    console.log(now);
+
+
+
+</script>
+
+</body>
+</html>

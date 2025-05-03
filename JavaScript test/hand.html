@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グージャンケン</title>
+
+    <style>
+        body {
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 50px;
+            background-color: cadetblue;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* Colori per i risultati */
+        .win {
+            color: green;
+        }
+
+        .lose {
+            color: red;
+        }
+
+        .draw {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <button onClick="myHand(0);">グー</button>
+    <button onClick="myHand(1);">チョキ</button>
+    <button onClick="myHand(2);">パー</button>
+    <hr>
+
+    私は<p id="myHand"></p>
+    あなたは<p id="ComHand"></p>
+    結果は<p id="result"></p>
+
+    <script>
+        const hands = ['グー', 'チョキ', 'パー'];
+
+        function myHand(mNum) {
+            // Genera la mano del computer ogni volta che l'utente gioca
+            const num = Math.floor(Math.random() * 3); 
+            document.getElementById('ComHand').innerHTML = hands[num];
+            document.getElementById('myHand').innerHTML = hands[mNum];
+            
+            // Chiama la funzione per decidere il vincitore
+            judge(num, mNum);
+        }
+
+        function judge(num, mNum) {
+            let msg = '';
+            let resultElement = document.getElementById('result');
+
+
+            // Rimuove tutte le classi precedenti
+            resultElement.classList.remove('win', 'lose', 'draw');
+
+            if (num === mNum) { 
+                msg = '引き分け';
+                resultElement.classList.add('draw');  // Cambia stile
+            } else if (
+                (num === 0 && mNum === 1) || 
+                (num === 1 && mNum === 2) || 
+                (num === 2 && mNum === 0)
+            ) {
+                msg = 'あなたの負け';
+                resultElement.classList.add('lose');  // Cambia stile
+            } else {
+                msg = 'あなたの勝ち';
+                resultElement.classList.add('win');  // Cambia stile
+            }
+            // Aggiorna il risultato
+            document.getElementById('result').innerHTML = msg;
+        }
+    </script>
+
+</body>
+</html>

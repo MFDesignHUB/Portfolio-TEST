@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border: 1px black;
+        }
+        .circle{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            border-radius: 50%;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function mod(color,width,height,shape){
+            const path= document.getElementById('box').style;
+            path.backgroundColor= color;
+            path.width = width;
+            path.height = height;
+            path.borderRadius = shape;
+        } 
+        
+        
+    </script>
+</head>
+<body>
+<div class="box" id="box" ></div>
+<button onclick="mod('blue','200px','200px','0%');">青色・200px正方形</button>
+<!-- 緑、黄、オレンジに色大きさが変わるボタンを作る -->
+ <button onClick="mod('green','100px','100px','0%');">緑色・100px</button>
+ <button onClick="mod('yellow','200px','100px','0%');">黄色・100px</button>
+ <button onClick="mod('green','200px','200px','50%');">緑色・200px</button>
+
+<div class="circle"></div>
+
+    
+</body>
+</html>
