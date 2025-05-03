@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>フィールドマップとキャラクター移動</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        canvas {
+            border: 1px solid #000;
+        }
+
+        h2 {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            width: 100%;
+            font-size: 24px;
+        }
+
+        #timer {
+            position: absolute;
+            left: 100px;
+            top: 30px;
+            font-size: 54px;
+            font-weight: bold;
+        }
+
+        #startText {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">15</div>
+    <div id="startText">START</div>
+    <h2>フィールドマップ</h2>
+    <img id="sourceImage" src="map.PNG" alt="Source Image" style="display:none;">
+    <img id="charUp" src="protagonist_up.gif" alt="Character Up" style="display:none;">
+    <img id="charDown" src="protagonist_down.gif" alt="Character Down" style="display:none;">
+    <img id="charLeft" src="protagonist_left.gif" alt="Character Left" style="display:none;">
+    <img id="charRight" src="protagonist_right.gif" alt="Character Right" style="display:none;">
+    <img id="tree" src="き.PNG" alt="Tree" style="display:none;">
+    <img id="pillar" src="柱２.PNG" alt="Pillar" style="display:none;">
+
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+
+    
+    
+
+
+    <script>
+        window.onload = function () {
+            const canvas = document.getElementById('myCanvas');
+            const context = canvas.getContext('2d');
+            const img = document.getElementById('sourceImage');
+            const startText = document.getElementById('startText');
+            const timerElement = document.getElementById('timer');
+            let timer = 15;
+
+            // Mostra "START" all'inizio
+            startText.style.display = 'block';
+            setTimeout(() => {
+                startText.style.display = 'none';
+            }, 1000);
+
+            // Timer di 30 secondi
+            const timerInterval = setInterval(() => {
+                timer--;
+                timerElement.textContent = timer;
+                if (timer <= 0) {
+                    clearInterval(timerInterval);
+                    alert("YOU FAILED!");
+                }
+            }, 1000);
+
+            // GIFs for character in different directions
+            const charUpImg = document.getElementById('charUp');
+            const charDownImg = document.getElementById('charDown');
+            const charLeftImg = document.getElementById('charLeft');
+            const charRightImg = document.getElementById('charRight');
+            
+            // Immagine degli alberi
+            const treeImg = document.getElementById('tree');
+            // Immagine del pilastro
+            const pillarImg = document.getElementById('pillar');
+            
+            let currentCharImg = charDownImg; // Initial character image
+
+            // Coordinate degli alberi (x, y)
+            const trees = [
+                { img: treeImg, x: 200, y: 200 }, // Primo albero
+                { img: treeImg, x: 400, y: 310 }, // Secondo albero
+                { img: treeImg, x: 340, y: 50 }    // Terzo albero
+            ];
+
+            // Posizione del pilastro (x, y)
+            const pillar = { img: pillarImg, x: 300, y: 300 }; // Puoi modificare la posizione come desideri
+
+            // Impostazioni della mappa
+            const cropWidth = 40;
+            const cropHeight = 40;
+            const spacing = 2;
+            const cols = 18;
+            const rows = 18;
+
+            const crops = [];
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    const x = col * (cropWidth + spacing);
+                    const y = row * (cropHeight + spacing);
+                    crops.push({ id: `${row}-${col}`, x: x, y: y, width: cropWidth, height: cropHeight, alerted: false });
+                }
+            }
+
+            img.onload = function() {
+                drawMap();
+                drawCharacter();
+            };
+
+            img.src = img.src;
+
+            let character = {
+                x: 100,
+                y: 100,
+                width: 40,
+                height: 40
+            };
+
+            function drawMap() {
+                crops.forEach(crop => {
+                    context.drawImage(img, crop.x, crop.y, crop.width, crop.height, crop.x, crop.y, crop.width, crop.height);
+                });
+
+                // Disegnare gli alberi
+                trees.forEach(tree => {
+                    context.drawImage(tree.img, tree.x, tree.y, 50, 60);  // Dimensioni dell'albero
+                });
+
+                // Disegnare il pilastro
+                context.drawImage(pillar.img, pillar.x, pillar.y, 50, 50);  // Dimensioni del pilastro
+            }
+
+            function drawCharacter() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                drawMap();
+                context.drawImage(currentCharImg, character.x, character.y, character.width, character.height);
+                checkTileEvent();
+            }
+
+            // Funzione per controllare se il personaggio è sopra il pilastro
+            function checkTileEvent() {
+                // Verifica se il personaggio è sopra il pilastro
+                if (character.x < pillar.x + 50 && character.x + character.width > pillar.x &&
+                    character.y < pillar.y + 50 && character.y + character.height > pillar.y) {
+                    alert("YOU WIN");
+                }
+            }
+
+            // Gestione degli eventi per il click sulla mappa
+            canvas.addEventListener('click', function(event) {
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = event.clientX - rect.left;
+                const mouseY = event.clientY - rect.top;
+
+                crops.forEach(crop => {
+                    if (mouseX >= crop.x && mouseX <= crop.x + crop.width &&
+                        mouseY >= crop.y && mouseY <= crop.y + crop.height) {
+                        alert(`切り抜き部分 ${crop.id} がクリックされました！`);
+                    }
+                });
+            });
+
+            // Gestione dei movimenti del personaggio
+            document.addEventListener('keydown', function(event) {
+                const step = 10;
+                switch (event.key) {
+                    case 'ArrowUp':
+                        currentCharImg = charUpImg;
+                        if (character.y - step >= 0) { character.y -= step; }
+                        break;
+                    case 'ArrowDown':
+                        currentCharImg = charDownImg;
+                        if (character.y + step + character.height <= canvas.height) { character.y += step; }
+                        break;
+                    case 'ArrowLeft':
+                        currentCharImg = charLeftImg;
+                        if (character.x - step >= 0) { character.x -= step; }
+                        break;
+                    case 'ArrowRight':
+                        currentCharImg = charRightImg;
+                        if (character.x + step + character.width <= canvas.width) { character.x += step; }
+                        break;
+                }
+                drawCharacter();
+            });
+        };
+    </script>
+</body>
+</html>

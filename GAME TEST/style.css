@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #d3d3d3; Colore di sfondo simile a una mappa */
+}
+
+#gameContainer {
+    position: relative;
+    width: 530px;  /* Aumentiamo la larghezza della finestra di gioco */
+    height: 500px; /* Aumentiamo l'altezza della finestra di gioco */
+    border: 3px solid black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+#map {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Mappa occupa la parte superiore dello schermo */
+    background-image: url(map1.png);
+  
+}
+
+#protagonist {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+}
+
+#controls {
+    position: absolute; /* Posizionamento indipendente dal flusso normale */
+    right: 250px; /* Sposta i controlli a destra, fuori dal riquadro di gioco */
+    top: 50%; /* Centra verticalmente i tasti rispetto al contenitore */
+    transform: translateY(-50%); /* Allinea esattamente al centro verticale */
+    display: flex;
+    flex-direction: column; /* Organizza i tasti in una colonna */
+    gap: 10px; /* Spazio tra i tasti */
+    
+}
+
+#controls .horizontal {
+    display: flex; /* Mostra i tasti sinistra/destra in una riga */
+    justify-content: center;
+}
+
+
+.horizontal {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.direction {
+    background-color: #515151;
+    border: none;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 25%;
+    
+}
+
+.direction:active {
+    background-color: #1f1f1f;
+}
+/* ----------------------------------------da qui cambia---------------------------------------------- */
+
+/* Stile per il filtro luminoso */
+.light-filter {
+    filter: brightness(1.2); /* Aumenta la luminosità */
+}
+
+/* Stile per il filtro scuro */
+.dark-filter {
+    filter: brightness(0.7); /* Riduce la luminosità */
+}
+
