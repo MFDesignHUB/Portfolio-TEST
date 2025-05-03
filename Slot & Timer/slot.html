@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex; /* Disposizione flessibile in orizzontale */
+            justify-content: center; /* Centrare orizzontalmente le immagini */
+            align-items: center; /* Allineare verticalmente al centro */
+        }
+        p{
+            border: 1px solid black;
+        }
+
+        img {
+        max-width: 110px; /* Larghezza massima dell'immagine */
+        max-height: 110px; /* Altezza massima dell'immagine */
+    }
+
+    .button-container {
+        display: flex; /* Allineamento orizzontale dei pulsanti */
+        justify-content: center; /* Centrare orizzontalmente i pulsanti */
+        gap: 10px; /* Spazio tra i pulsanti */
+        margin-top: 20px; /* Spazio sopra ai pulsanti */
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    </style>
+</head>
+<body>
+    <div>
+    <p id="pos0"></p>
+    <p id="pos1"></p>
+    <p id="pos2"></p>
+    </div>
+    
+    <!-- <img src="fruits/melon.png" alt=""> -->
+
+    <button onclick="startSlot();">スロットを回す</button>
+    <button onclick="stopSlot();">スロットを止める</button>
+    <script>
+        // document.getElementById('pos0').innerHTML = '<img src="fruits/melon.png" alt="100">';
+        // document.getElementById('pos1').innerHTML = '<img src="fruits/apple.png" alt="100">';
+        // document.getElementById('pos2').innerHTML = '<img src="fruits/orange.png" alt="100">';
+
+
+
+        const imgs = ['apple', 'banana', 'orange', 'melon', 'lemon'];
+
+
+        // Variabili per i timer
+        let pos0Interval, pos1Interval, pos2Interval;
+
+        // Funzione per aggiornare lo slot con un'immagine casuale
+        function updateSlot(position) {
+            const randomIndex = Math.floor(Math.random() * imgs.length);
+            document.getElementById(position).innerHTML = 
+                '<img src="fruits/' + imgs[randomIndex] + '.png" alt="' + imgs[randomIndex] + '">';
+        }
+
+        // Avviare gli slot
+        function startSlot() {
+            pos0Interval = setInterval(() => updateSlot('pos0'), 100);
+            pos1Interval = setInterval(() => updateSlot('pos1'), 100);
+            pos2Interval = setInterval(() => updateSlot('pos2'), 100);
+        }
+
+        // Fermare gli slot
+        function stopSlot() {
+            clearInterval(pos0Interval);
+            clearInterval(pos1Interval);
+            clearInterval(pos2Interval);
+        }
+
+        // Inizializzazione: imposta un'immagine casuale all'inizio
+        updateSlot('pos0');
+        updateSlot('pos1');
+        updateSlot('pos2');
+    </script>
+</body>
+</html>

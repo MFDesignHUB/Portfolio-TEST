@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="startT();">スタート</button>
+    <button onclick="stopT();">ストップ</button>
+    <p id="msg"></p>
+
+    <script>
+        // 1文字を
+        function dispMsg(){
+            document.getElementById('msg').innerHTML += 'こんにちわ';
+        }
+        // 2タイマー
+        function startT(){
+            timer1 = setInterval(dispMsg,500);
+            // 動かしたい関数  1/1000秒 
+        }
+
+        // 3タイマーを止める
+        function stopT(){
+            clearInterval(timer1);
+        }
+
+    </script>
+</body>
+</html>

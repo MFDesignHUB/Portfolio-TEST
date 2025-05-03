@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+        }
+        p{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p id="pos0"></p>
+        <p id="pos1"></p>
+        <p id="pos2"></p>
+    </div>
+    <!-- <img src="fruits/melon.png" alt=""> -->
+
+    <button onClick="startSlot();">スロットを回す</button>
+    <button onClick="stopSlot();">スロットを止める</button>
+    <!-- 各関数の中身は自分で考えて作る -->
+
+    <script>
+        // ３枚の画像がタンダムに出てくるプログラム
+        function slot(){
+            // 画像名の配列を作る
+            var imgs = ['apple','banana','orange','melon','lemon'];
+
+            // 画像を要素番号で呼び出して画面に表示する
+            // melonを配列から呼びたい imgs[3]
+            // document.getElementById('pos0').innerHTML = 
+            //     '<img src="fruits/'+imgs[4]+'.png" alt="'+imgs[4]+'" width="100">';
+
+            //　３枚の画像を横並びに、ランダムに表示をするようにしてください。
+
+            // 画像を３枚並べるためにfor文を使う
+            for(var i=0; i<3; i++){
+
+                // 画像をランダムに出す、画像は要素番号で管理。
+                // lengthは配列の要素数
+                var rand = Math.floor(Math.random() * imgs.length);
+
+                document.getElementById('pos'+i).innerHTML = 
+                '<img src="fruits/'+imgs[rand]+'.png" alt="'+imgs[rand]+'" width="100">';
+            }
+        }
+        // slot();
+        function startSlot(){
+            timer1 = setInterval(slot, 100);
+        }
+        function stopSlot(){
+            clearInterval(timer1);
+        }
+
+</script>
+</body>
+</html>
