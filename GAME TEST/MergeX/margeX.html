@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>フィールドマップとキャラクター移動</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h2>フィールドマップ</h2>
+    <img id="sourceImage" src="tiles.png" alt="Source Image" style="display:none;">
+    <canvas id="myCanvas" width="512" height="512"></canvas>
+
+    <script>
+        const mapData = [
+            [0, 0, 0, 2, 2, 0, 0, 0],
+            [0, 1, 0, 2, 2, 0, 1, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [2, 2, 0, 0, 0, 0, 2, 2],
+            [2, 2, 0, 3, 0, 0, 2, 2],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 3, 0, 0, 0, 0]
+        ];
+
+        const tileTypes = {
+            0: { x: 0, y: 0 },    // Terrain (green grass)
+            1: { x: 64, y: 0 },   // Mountains
+            2: { x: 128, y: 0 },  // Water
+            3: { x: 192, y: 0 }   // Treasure (Chest)
+        };
+
+        window.onload = function () {
+            const canvas = document.getElementById('myCanvas');
+            const context = canvas.getContext('2d');
+            const img = document.getElementById('sourceImage');
+
+            const cropWidth = 64;   // Tile width
+            const cropHeight = 64;  // Tile height
+
+            img.onload = function() {
+                drawCharacter(); // Draw character after image loads
+            };
+            img.src = img.src;
+
+            let character = {
+                x: 0,
+                y: 0,
+                width: cropWidth,
+                height: cropHeight,
+                color: 'blue'
+            };
+
+            function drawMap() {
+                mapData.forEach((row, rowIndex) => {
+                    row.forEach((tile, colIndex) => {
+                        const tileType = tileTypes[tile];
+                        context.drawImage(img,
+                            tileType.x, tileType.y, cropWidth, cropHeight,
+                            colIndex * cropWidth, rowIndex * cropHeight, cropWidth, cropHeight);
+                    });
+                });
+            }
+
+            function drawCharacter() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                drawMap();
+                context.fillStyle = character.color;
+                context.fillRect(character.x, character.y, character.width, character.height);
+                checkTileEvent();
+            }
+
+            function checkTileEvent() {
+                const tileX = Math.floor(character.x / cropWidth);
+                const tileY = Math.floor(character.y / cropHeight);
+                const tile = mapData[tileY][tileX];
+
+                if (tile === 1) {
+                    alert('You hit a mountain and cannot pass.');
+                    resetCharacterPosition();
+                } else if (tile === 2) {
+                    alert('You fell into the water and lost!');
+                    resetCharacterPosition();
+                } else if (tile === 3) {
+                    alert('You found a treasure chest!');
+                }
+            }
+
+            function resetCharacterPosition() {
+                character.x = 0;
+                character.y = 0;
+            }
+
+            document.addEventListener('keydown', function(event) {
+                const step = 64;
+
+                switch (event.key) {
+                    case 'ArrowUp':
+                        character.y = Math.max(character.y - step, 0);
+                        break;
+                    case 'ArrowDown':
+                        character.y = Math.min(character.y + step, canvas.height - character.height);
+                        break;
+                    case 'ArrowLeft':
+                        character.x = Math.max(character.x - step, 0);
+                        break;
+                    case 'ArrowRight':
+                        character.x = Math.min(character.x + step, canvas.width - character.width);
+                        break;
+                }
+                drawCharacter();
+            });
+        };
+    </script>
+</body>
+</html>
