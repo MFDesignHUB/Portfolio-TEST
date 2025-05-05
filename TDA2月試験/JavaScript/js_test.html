@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>2024年度Webデザインテスト(JavaScriptテスト)</title>
+</head>
+
+<body>
+    <h1>2024年度Webデザインテスト(JavaScriptテスト)　dクラス　14　名Ferretto Mattia</h1>
+    <p>設問内容をよく読み、各設問を適切にコーディングせよ。</p>
+    <p>h1タグにクラス名と氏名を記入せよ。</p>
+
+    <h2>JavaScriptパート</h2>
+
+    <h3>問1.　文字の表示をJavaScript(jQueryも可)で記述せよ</h3>
+    <h4>以下のid、msgへ「こんにちわ」という文字を表示されるよう、JavaScript(jQueryも可)で記述せよ</h4>
+
+    <p id="msg"></p>
+    <script>
+        document.getElementById("msg").textContent = "こんにちわ";
+    </script>
+
+    <h3>問2.　画像の表示をJavaScript(jQueryも可)で記述せよ</h3>
+    <h4>js_images/フォルダ内にある、01から05までの連続するファイル名の付いたpng画像が表示されるように配列とfor文を使ってJavaScript(jQueryも可)で記述せよ。</h4>
+
+    <div id="img"></div>
+    <script>
+        let imgContainer = document.getElementById("img");
+        for (let i = 1; i <= 5; i++) {
+            let img = document.createElement("img");
+            img.src = `js_images/0${i}.png`;
+            img.alt = `画像 ${i}`;
+            img.style.margin = "5px";
+            imgContainer.appendChild(img);
+        }
+    </script>
+
+    <h3>問3.　イベントを含む画像の表示をJavaScript(jQueryも可)で記述せよ</h3>
+    <h4>pタグの中に含まれる文字を押した際に、文字色が赤色になる様にJavaScript(jQueryも可)で記述せよ。</h4>
+
+    <p id="fontP">試験をがんばろうね</p>
+    <script>
+        document.getElementById("fontP").addEventListener("click", function() {
+            this.style.color = "red";
+        });
+    </script>
+
+    <h3>問4.　画像の表示をJavaScript(jQueryも可)で記述せよ</h3>
+    <h4>以下のりんごの画像が現在時を利用し１秒おきに１％づつ大きくなっていく（59%まで）アニメーションをJavaScriptで作成しなさい。</h4>
+
+    <img id="apple" src="js_images/01.png" style="width: 50%;">
+    <script>
+        let apple = document.getElementById("apple");
+        let size = 50;
+        let interval = setInterval(() => {
+            if (size < 59) {
+                size++;
+                apple.style.width = size + "%";
+            } else {
+                clearInterval(interval);
+            }
+        }, 1000);
+    </script>
+
+    <h3>問5.　２択問題にラジオボタンで回答を行わさせ、一問50点とし、「採点します」ボタンを押すと合計点数を<p>タグの中に表示させなさい。</h3>
+    <h4>なお、数字として計算が行われない場合、Number()を利用すると数字として扱える様になる。</h4>
+
+    <form id="quizForm">
+        <p>Q1: カラスは何色？</p>
+        <label><input type="radio" name="q1" value="50">黒</label>
+        <label><input type="radio" name="q1" value="0">白</label>
+        <p>Q2: りんご何色？</p>
+        <label><input type="radio" name="q2" value="50">赤</label>
+        <label><input type="radio" name="q2" value="0">青</label>
+        <br>
+        <input type="button" value="採点します" onclick="calculateScore()">
+    </form>
+
+    <p id="theScore">点数を表示します</p>
+    <script>
+        function calculateScore() {
+            let q1 = document.querySelector('input[name="q1"]:checked');
+            let q2 = document.querySelector('input[name="q2"]:checked');
+            let score = 0;
+
+            if (q1) score += Number(q1.value);
+            if (q2) score += Number(q2.value);
+
+            document.getElementById("theScore").textContent = "合計点数: " + score + "点";
+        }
+    </script>
+
+</body>
+</html>
