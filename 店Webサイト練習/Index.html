@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ミニマルECサイト</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #eef1f4;
+      color: #333;
+    }
+    header {
+      background-color: #1c2531;
+      padding: 20px;
+      color: #fff;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .slider {
+      position: relative;
+      overflow: hidden;
+      max-height: 400px;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slides img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: center;
+      flex-shrink: 0;
+    }
+    .section {
+      padding: 40px;
+    }
+    .section h2 {
+      color: #3a75c4;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    .product-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .product-carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .product-card {
+      flex: 0 0 auto;
+      width: 280px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+      scroll-snap-align: start;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-card .info {
+      padding: 15px;
+    }
+    .product-card .info h3 {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #1c2531;
+    }
+    .product-card .info p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .product-card .price {
+      position: absolute;
+      bottom: 10px;
+      left: 15px;
+      font-size: 16px;
+      color: #3a75c4;
+      font-weight: bold;
+    }
+    .info-map-section {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #fff;
+      padding: 40px 20px;
+      margin: 40px 0 0;
+      gap: 20px;
+    }
+    .info-text, .map-container {
+      flex: 1 1 45%;
+    }
+    .info-text h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #1c2531;
+    }
+    .info-text p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+    }
+    footer {
+      background-color: #1c2531;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      line-height: 1.8;
+    }
+    footer p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div>サラリーショップ</div>
+    <div>
+      <a href="#">ホーム</a>
+      <a href="#">商品</a>
+      <a href="#">お問い合わせ</a>
+      <a href="#">カート</a>
+    </div>
+  </nav>
+</header>
+
+<div class="slider">
+  <div class="slides">
+    <img src="images/1.jpg" alt="Slide 1">
+    <img src="images/2.jpg" alt="Slide 2">
+    <img src="images/3.jpg" alt="Slide 3">
+    <img src="images/4.jpg" alt="Slide 4">
+  </div>
+</div>
+
+<div class="section">
+    <h2>おすすめ商品</h2>
+    <div class="product-carousel">
+      <!-- 8 box prodotto -->
+      <div class="product-card">
+        <img src="images/prod1.jpg" alt="Prodotto 1">
+        <div class="info">
+          <h3>商品 1</h3>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="price">1234円</div>
+      </div>
+      <!-- altri 7 identici -->
+      <div class="product-card"><img src="images/prod2.jpg"><div class="info"><h3>商品 2</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod3.jpg"><div class="info"><h3>商品 3</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod4.jpg"><div class="info"><h3>商品 4</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod5.jpg"><div class="info"><h3>商品 5</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod6.jpg"><div class="info"><h3>商品 6</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod7.jpg"><div class="info"><h3>商品 7</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod8.jpg"><div class="info"><h3>商品 8</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>新着情報</h2>
+    <div class="product-carousel">
+      <!-- stessa struttura -->
+      <div class="product-card"><img src="images/prod10.jpg"><div class="info"><h3>新着 1</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod11.jpg"><div class="info"><h3>新着 2</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod11.jpg"><div class="info"><h3>新着 3</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod12.jpg"><div class="info"><h3>新着 4</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod13.jpg"><div class="info"><h3>新着 1</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod14.jpg"><div class="info"><h3>新着 2</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod15.jpg"><div class="info"><h3>新着 3</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+      <div class="product-card"><img src="images/prod9.jpg"><div class="info"><h3>新着 4</h3><p>Lorem ipsum dolor sit amet.</p></div><div class="price">1234円</div></div>
+    </div>
+  </div>
+  
+
+<!-- box chi siamo + mappa -->
+<div class="info-map-section">
+  <div class="info-text">
+    <h3>私たちについて</h3>
+    <p>サラリーショップは、東京の中心部に位置するミニマルで高品質な製品を提供するECサイトです。<br>
+      私たちのミッションは、お客様の日常を彩るシンプルで上質な商品をお届けすることです。</p>
+  </div>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.994112506872!2d139.69932501525963!3d35.68948718019239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c0a79c7c9f7%3A0x6e8ebfefb14f6c2b!2sTokyo%20Tower!5e0!3m2!1sit!2sjp!4v1616212143215!5m2!1sit!2sjp" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 サラリーショップ</p>
+  <p>住所: 〒100-0005 東京都千代田区丸の内1-1-1</p>
+  <p>電話番号: +81 3-1234-5678</p>
+  <p>メール: info@salaryshop.jp</p>
+  <p>全著作権所有</p>
+</footer>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelector('.slides');
+  const totalSlides = slides.children.length;
+
+  function showNextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    slides.style.transform = 'translateX(-' + (100 * currentIndex) + '%)';
+  }
+
+  setInterval(showNextSlide, 3000);
+</script>
+
+</body>
+</html>
+

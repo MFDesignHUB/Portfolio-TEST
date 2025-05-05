@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Redesign</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 16px;
+      color: #333;
+      background-color: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    .logo {
+      width: 150px;
+      height: 50px;
+      background-color: #ddd;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+    }
+    .hero {
+      height: 400px;
+      background-color: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #fff;
+    }
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product {
+      flex: 1 1 calc(33.333% - 20px);
+      background-color: #f9f9f9;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .product-image {
+      width: 100%;
+      height: 200px;
+      background-color: #ddd;
+      margin-bottom: 10px;
+    }
+    footer {
+      padding: 20px;
+      text-align: center;
+      background-color: #f2f2f2;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"></div>
+    <nav>
+      <ul>
+        <li><a href="#">ホーム</a></li>
+        <li><a href="#">作品</a></li>
+        <li><a href="#">イベント</a></li>
+        <li><a href="#">おとやわせ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero">
+    Pokemon Center
+  </div>
+
+  <div class="content">
+    <div class="product">
+      <div class="product-image"></div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <div class="product">
+      <div class="product-image"></div>
+      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="product">
+      <div class="product-image"></div>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Pokémon Redesign.
+  </footer>
+
+</body>
+</html>
